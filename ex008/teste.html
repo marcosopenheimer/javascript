@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nacionalização</title>
+</head>
+<body>
+  <h1>Está se naturalizando no Brasil?</h1>
+
+  <p>Qual é o seu país de origem?</p>
+  <input type="text" id="pais" placeholder="Ex.: Brasil" />
+  <button id="confirmar">Confirmar</button>
+
+  <div id="selecao"></div>
+
+  <script>
+    const inputPais = document.getElementById('pais');
+    const saida = document.getElementById('selecao');
+    const btn = document.getElementById('confirmar');
+
+    function verificar() {
+      const valor = inputPais.value.trim().toLowerCase();
+      if (!valor) {
+        saida.textContent = 'Informe um país.';
+        return;
+      }
+      if (valor === 'brasil') {
+        saida.textContent = 'Você é brasileiro nativo!';
+      } else {
+        saida.textContent = 'Você é estrangeiro! Compareça à unidade mais próxima com o seu passaporte para a naturalização.';
+      }
+    }
+
+    btn.addEventListener('click', verificar);
+    inputPais.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') verificar();
+    });
+  </script>
+</body>
+</html>
